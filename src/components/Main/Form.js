@@ -6,8 +6,8 @@ const Form = () => {
             <form>
                 <input type="text" placeholder="Search Countries!"/>
                 <input type="submit"/>
-                <a >All Countries</a>
-                <a>Quiz</a>
+                <button>All Countries</button>
+                <button>Quiz</button>
             </form>
         </div>
     )
