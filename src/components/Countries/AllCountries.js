@@ -3,11 +3,11 @@ import CountryList from '../CountryList/CountryList';
 
 const AllCountries = (props) => {
     return (
-        <div >
+        <div>
             {
                 props.nations.map((nation, i) => {
                     return (<CountryList
-                        key={i}
+                        key={nation.name}
                         name={nation.name}
                         flag={nation.flag}
                         demonym={nation.demonym}

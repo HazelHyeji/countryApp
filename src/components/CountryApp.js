@@ -9,7 +9,8 @@ class CountryApp extends React.Component {
         searchfield: ''
     };
     
-    componentWillMount() {
+    componentDidMount() {
+        console.log("did Mount!")
         fetch('https://restcountries.eu/rest/v2/all')
             .then(response => response.json())
             .then(nations => {
@@ -19,17 +20,27 @@ class CountryApp extends React.Component {
             .catch(error => console.log("error!", error))
     }
 
-    countryClickHandler = () => {
+    countryClickHandler = (e) => {
+        e.preventDefault();
+        console.log(this.state.showCountry)
         this.setState({ showCountry: !this.state.showCountry });
     }
 
     render() {
         return (
             <div>
-                <Main />
-                <AllCountries nations={this.state.nations}/>
+                <Main 
+                    countryClickHandler={this.countryClickHandler} 
+                    showCountry={this.state.showCountry}
+                />
+                {this.state.showCountry && 
+                    <AllCountries 
+                        nations={this.state.nations}
+                    />
+                }
             </div>
         );
     }
 }
+
 export default CountryApp;
