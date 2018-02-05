@@ -1,16 +1,17 @@
 import React from 'react';
 import Main from './Main/Form';
 import AllCountries from './Countries/AllCountries';
+import Quiz from './Quiz/Quiz';
 
 class CountryApp extends React.Component {
     state = {
         nations: [],
         showCountry: false,
+        showQuiz: false,
         searchfield: ''
     };
     
     componentDidMount() {
-        console.log("did Mount!")
         fetch('https://restcountries.eu/rest/v2/all')
             .then(response => response.json())
             .then(nations => {
@@ -20,23 +21,35 @@ class CountryApp extends React.Component {
             .catch(error => console.log("error!", error))
     }
 
-    countryClickHandler = (e) => {
+    buttonClickHandler = (e) => {
+        console.log("button clicked");
+        console.log(e.target.value);
         e.preventDefault();
-        console.log(this.state.showCountry)
-        this.setState({ showCountry: !this.state.showCountry });
+        if( e.target.value == "allCountries" ){
+            this.setState({ showCountry: !this.state.showCountry });
+        } else if ( e.target.value == "quiz" ) {
+            this.setState({ showQuiz: !this.state.showQuiz });
+        }
     }
 
     render() {
         return (
             <div>
-                <Main 
-                    countryClickHandler={this.countryClickHandler} 
+                <Main
+                    buttonClickHandler={this.buttonClickHandler} 
                     showCountry={this.state.showCountry}
+                    showQuiz={this.state.showQuiz}
                 />
                 {this.state.showCountry && 
                     <AllCountries 
                         nations={this.state.nations}
                     />
+                }
+                {this.state.showQuiz && 
+                    <Quiz 
+                        buttonClickHandler={this.buttonClickHandler}
+                        nations={this.state.nations}>
+                    </Quiz>
                 }
             </div>
         );

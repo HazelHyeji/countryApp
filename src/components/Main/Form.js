@@ -6,8 +6,8 @@ const Form = (props) => {
             <form>
                 <input type="text" placeholder="Search Countries!"/>
                 <input type="submit"/>
-                <button onClick={props.countryClickHandler}>All Countries</button>
-                <button>Quiz</button>
+                <button onClick={props.buttonClickHandler} value="allCountries">All Countries</button>
+                <button onClick={props.buttonClickHandler} value="quiz">Quiz</button>
             </form>
         </div>
     )
