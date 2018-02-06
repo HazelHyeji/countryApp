@@ -2,24 +2,23 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 
 
-import Main from './Main/Form';
-import AllCountries from './Countries/AllCountries';
-import Quiz from './Quiz/Quiz';
 import SearchCountry from './SearchCountry/SearchCountry';
+import Buttons from './Buttons/Buttons';
+import AllCountries from './AllCountries/AllCountries';
+import Quiz from './Quiz/Quiz';
+import NotFound from './NotFound/NotFound';
+import CountryApp from '../../components/CountryApp';
 
-const AppRouter = () => (
+const Router = () => (
     <BrowserRouter>
         <div>
-            <Header />
             <Switch>
-                <Route path="/" component={HomePage} exact={true} />
-                <Route path="/portfolio" component={Portfolio} />
-                <Route path="/contact" component={Contact} />
-                <Route path="/portfolio:id" component={PortfoliItem} />
+                <Route path="/" component={CountryApp} exact={true} />
+                <Route path="/quiz" component={Quiz}/>
                 <Route component={NotFound} />
             </Switch>
         </div>
     </BrowserRouter>
 );
 
-export default AppRouter;
+export default Router;
