@@ -4,7 +4,7 @@ const Form = (props) => {
     return(
         <div>
             <form>
-                <input type="text" placeholder="Search Countries!"/>
+                <input type="text" placeholder="Search Countries!" onChange={props.searchChange}/>
                 <input type="submit"/>
                 <button onClick={props.buttonClickHandler} value="allCountries">All Countries</button>
                 <button onClick={props.buttonClickHandler} value="quiz">Quiz</button>

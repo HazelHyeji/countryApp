@@ -1,7 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import Main from './Main/Form';
 import AllCountries from './Countries/AllCountries';
 import Quiz from './Quiz/Quiz';
+import SearchCountry from './SearchCountry/SearchCountry';
 
 class CountryApp extends React.Component {
     state = {
@@ -32,6 +35,10 @@ class CountryApp extends React.Component {
         }
     }
 
+    onSearchChange = (event) => {
+        this.setState({ searchfield: event.target.value })
+    }
+
     render() {
         return (
             <div>
@@ -39,6 +46,7 @@ class CountryApp extends React.Component {
                     buttonClickHandler={this.buttonClickHandler} 
                     showCountry={this.state.showCountry}
                     showQuiz={this.state.showQuiz}
+                    searchChange={this.onSearchChange}
                 />
                 {this.state.showCountry && 
                     <AllCountries 
@@ -51,6 +59,7 @@ class CountryApp extends React.Component {
                         nations={this.state.nations}>
                     </Quiz>
                 }
+                <SearchCountry nations={this.state.nations}/>
             </div>
         );
     }
