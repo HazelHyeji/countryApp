@@ -9,7 +9,6 @@ const SearchForm = (props) => {
                     placeholder="Search Countries!" 
                     onChange={props.onSearchChange}
                 />
-                <input type="submit"/>
             </form>
         </div>
     )

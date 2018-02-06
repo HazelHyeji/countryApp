@@ -39,15 +39,22 @@ class CountryApp extends React.Component {
     // }
 
     onSearchChange = (event) => {
-        this.setState({ searchfield: event.target.value })
+        event.preventdefault;
+        this.setState({ searchfield: event.target.value });
+        console.log(this.state.searchfield);
     }
 
     render() {
+        const filteredCountry = this.state.nations.filter(nation => {
+            return nation.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        })
         return (
             <div>
                 <SearchCountry onSearchChange={this.onSearchChange}></SearchCountry>
-                <Buttons><Quiz nations={this.state.nations}></Quiz></Buttons>
-                <AllCountries nations={this.state.nations}></AllCountries>
+                <Buttons><Quiz/></Buttons>
+                <AllCountries 
+                    nations={filteredCountry}>
+                </AllCountries>
             </div>
         );
     }
