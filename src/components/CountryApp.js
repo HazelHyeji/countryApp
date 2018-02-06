@@ -47,7 +47,7 @@ class CountryApp extends React.Component {
             <div>
                 <SearchCountry onSearchChange={this.onSearchChange}></SearchCountry>
                 <Buttons></Buttons>
-                <AllCountries></AllCountries>
+                <AllCountries nations={this.state.nations}></AllCountries>
             </div>
         );
     }
