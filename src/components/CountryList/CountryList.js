@@ -5,7 +5,7 @@ const CountryList = ({name, flag, demonym}) => {
         <div>
             <div className="">
                 <h2>{name}</h2>
-                <img src={flag} />
+                <img width="150" src={flag} />
                 <p>{demonym}</p>
             </div>
         </div>
