@@ -7,6 +7,7 @@ import Buttons from './Buttons/Buttons';
 import AllCountries from './AllCountries/AllCountries';
 import Quiz from './Quiz/Quiz';
 import NotFound from './NotFound/NotFound';
+;
 
 
 class CountryApp extends React.Component {
@@ -51,7 +52,8 @@ class CountryApp extends React.Component {
         return (
             <div>
                 <SearchCountry onSearchChange={this.onSearchChange}></SearchCountry>
-                <Buttons><Quiz/></Buttons>
+                <Buttons></Buttons>
+                <Quiz nations={this.state.nations}/>
                 <AllCountries 
                     nations={filteredCountry}>
                 </AllCountries>

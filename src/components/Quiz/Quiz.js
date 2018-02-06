@@ -1,7 +1,8 @@
 import React from 'react';
 
 const Quiz = (props) => {
-    // const countryArr = Object.keys(props.nations);
+    const countryArr = Object.keys(props.nations);
+    console.log(props);
     // console.log(countryArr);
     return (
         <div>

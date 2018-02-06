@@ -9,12 +9,12 @@ import Quiz from '../Quiz/Quiz';
 import NotFound from '../NotFound/NotFound';
 import CountryApp from '../../components/CountryApp';
 
-const Router = (props) => (
+const Router = () => (
     <BrowserRouter>
         <div>
             <Switch>
                 <Route path="/" component={CountryApp} exact={true} />
-                <Route path="/quiz" render={(props) => (<Quiz nations={this.props.nations}/>)}/>
+                <Route path="/quiz" render={props => <Quiz nations={props.nations} {...props} />}/>
                 <Route component={NotFound} />
             </Switch>
         </div>
