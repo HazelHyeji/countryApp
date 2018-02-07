@@ -2,15 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 
-import SearchCountry from './SearchCountry/SearchCountry';
-import Buttons from './Buttons/Buttons';
-import AllCountries from './AllCountries/AllCountries';
+import CountryApp from './CountryApp/CountryApp';
 import Quiz from './Quiz/Quiz';
 import NotFound from './NotFound/NotFound';
 ;
 
 
-class CountryApp extends React.Component {
+class Router extends React.Component {
     state = {
         nations: [],
         showCountry: false,
@@ -44,22 +42,20 @@ class CountryApp extends React.Component {
         this.setState({ searchfield: event.target.value });
         console.log(this.state.searchfield);
     }
-
-    render() {
-        const filteredCountry = this.state.nations.filter(nation => {
-            return nation.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
-        })
+    
+    render(){
         return (
-            <div>
-                <SearchCountry onSearchChange={this.onSearchChange}></SearchCountry>
-                <Buttons></Buttons>
-                <Quiz nations={this.state.nations}/>
-                <AllCountries 
-                    nations={filteredCountry}>
-                </AllCountries>
-            </div>
+            <BrowserRouter>
+                <div>
+                    <Switch>
+                        <Route path="/" component={CountryApp} exact={true} />
+                        <Route path="/quiz" render={props => <Quiz nations={props.nations} {...props} />} />
+                        <Route component={NotFound} />
+                    </Switch>
+                </div>
+            </BrowserRouter>
         );
     }
 }
 
-export default CountryApp;
+export default Router;
