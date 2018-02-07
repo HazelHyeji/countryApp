@@ -9,7 +9,7 @@ import NotFound from '../NotFound/NotFound';
 ;
 
 
-class CountryApp extends React.Component {
+class CountryApp extends React.Component  {
     state = {
         nations: [],
         showCountry: false,
@@ -43,7 +43,7 @@ class CountryApp extends React.Component {
         this.setState({ searchfield: event.target.value });
         console.log(this.state.searchfield);
     }
-
+    
     render() {
         const filteredCountry = this.state.nations.filter(nation => {
             return nation.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
@@ -52,12 +52,11 @@ class CountryApp extends React.Component {
             <div>
                 <SearchCountry onSearchChange={this.onSearchChange}/>
                 <Buttons />
-                <AllCountries 
-                    nations={filteredCountry}>
-                </AllCountries>
+                <AllCountries nations={filteredCountry}/>>
             </div>
         );
     }
 }
+
 
 export default CountryApp;
