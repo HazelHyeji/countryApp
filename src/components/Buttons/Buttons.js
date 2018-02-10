@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const Buttons = (props) => {
-    return (
+
+const Buttons = (props) => (
         <div>
-            <Link to="/quiz"><button value="quiz">Quiz</button></Link>
+            <button value="quiz">Quiz</button>
         </div>
-    )
-}
+    );
 
 export default Buttons;
