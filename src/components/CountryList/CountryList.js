@@ -1,14 +1,18 @@
 import React from 'react';
+import Country from '../Country';
 
-const CountryList = ({name, flag, demonym}) => {
-    return (
-        <div>
-            <div className="">
-                <h2>{name}</h2>
-                <img width="150" src={flag} />
-                <p>{demonym}</p>
-            </div>
-        </div>
-    );
-}
+const CountryList = props => (
+  <div>
+    {
+            props.nations.map((nation, i) => (<Country
+              key={nation.name}
+              name={nation.name}
+              flag={nation.flag}
+              demonym={nation.demonym}
+            />
+          ))
+  }
+  </div>
+);
+
 export default CountryList;
